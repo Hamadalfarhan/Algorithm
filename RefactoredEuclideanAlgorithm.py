@@ -44,4 +44,3 @@ if __name__ == "__main__":
     gcd = GCDCalculator.calculate_gcd(user_input[0], user_input[1])
     print(f"The GCD of {user_input[0]} and {user_input[1]} is: {gcd}")
 
-#testing123
