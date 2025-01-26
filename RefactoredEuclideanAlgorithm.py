@@ -25,22 +25,22 @@ def get_user_input():
     Accepts and validates the users input for two positive integers and
     returns a tuple of two integers if valid, None otherwise
     """
-    
-    try:  
-        # Prompt user for the first and second numbers
-        a = int(input("Please enter the first positive integer: "))
-        b = int(input("Please enter the second positive integer: "))
+    while True:
+       try:  
+           # Prompt user for the first and second numbers
+           a = int(input("Please enter the first positive integer: "))
+           b = int(input("Please enter the second positive integer: "))
         
-        # Validate that both numbers are positive
-        if a <= 0 or b <= 0:
-            print("Invalid input: Both numbers must be positive integers.")
-            return None
-
-        return a, b
-    except ValueError:
-        # Handle non-integer inputs
-        print("Invalid input: Please enter valid integers.")
-        return None
+           # Validate that both numbers are positive
+           if a <= 0 or b <= 0:
+               print("Invalid input: Both numbers must be positive integers.")
+           elif a > 1_000_000_000 or b > 1_000_000_000:
+               print("Error: Numbers are too large. Please enter values below 1,000,000,000.")   
+           else:
+                return a, b    
+       except ValueError:
+           print("Invalid input: Please enter valid integers.")
+        
 
 
 if __name__ == "__main__":
