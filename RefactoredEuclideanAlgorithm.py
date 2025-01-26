@@ -1,26 +1,24 @@
 
 class GCDCalculator:
-    """
-    A utility class to calculate the GCD of two positive integers using the Euclidean Algorithm.
-
-    This class provides reusable functionality for finding the greatest common divisor (GCD)
-    """
-
-
-
+    
+    # A utility class to calculate the GCD of two positive integers using the Euclidean Algorithm.
+    # This class provides reusable functionality for finding the greatest common divisor (GCD) and the least common multiple (LCM)
+    
+    @staticmethod
     def calculate_gcd(a, b):
         """
         Finds the GCD of two integers using the Euclidean Algorithm.
-
-        Parameters:
-        - a, b (int): Positive integers.
-
-        Returns:
-        - int: The GCD of 'a' and 'b'.
         """
         while b != 0:
             a, b = b, a % b
         return a
+
+   
+    @staticmethod
+    def calculate_lcm(a, b):
+        """Calculate the Least Common Multiple (LCM) using the GCD."""
+        return abs(a * b) // GCDCalculator.calculate_gcd(a, b)
+    
 
 def get_user_input():
     """
@@ -35,19 +33,21 @@ def get_user_input():
         
         # Validate that both numbers are positive
         if a <= 0 or b <= 0:
-            print("Error: Both numbers must be positive integers.")
+            print("Invalid input: Both numbers must be positive integers.")
             return None
 
         return a, b
     except ValueError:
         # Handle non-integer inputs
-        print("Error: Please enter valid integers.")
+        print("Invalid input: Please enter valid integers.")
         return None
 
+
 if __name__ == "__main__":
-    """
-  Finds the GCD of two integers using the Euclidean Algorithm.
-    """
+    print("Welcome to the GCD Calculator!")
+    
+  # Finds the GCD of two integers using the Euclidean Algorithm.
+    
     user_input = None
  
     # Continue prompting until valid input is received
@@ -56,7 +56,8 @@ if __name__ == "__main__":
 
    # Compute the GCD using the GCDCalculator class
     gcd = GCDCalculator.calculate_gcd(user_input[0], user_input[1])
-    
-    # Display the result
-    print(f"The GCD of {user_input[0]} and {user_input[1]} is: {gcd}")
+    lcm = GCDCalculator.calculate_lcm(user_input[0], user_input[1])
 
+    # Display the results
+    print(f"The greatest common divisor (GCD) of {user_input[0]} and {user_input[1]} is: {gcd}.")
+    print(f"The least common multiple (LCM) of {user_input[0]} and {user_input[1]} is: {lcm}.")
